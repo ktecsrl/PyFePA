@@ -16,6 +16,7 @@
 ###################################################################################################################
 
 from fields import *
+from fepa import GenFePA
 
 lxml = False
 
@@ -26,7 +27,7 @@ except ImportError:
     import xml.etree.ElementTree as ElementTree
 
 
-class NotificaScarto(object):
+class NotificaScarto(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
     DataOraRicezione = FieldDate()
@@ -37,21 +38,21 @@ class NotificaScarto(object):
     Note = FieldString()
 
 
-class RiferimentoArchivio(object):
+class RiferimentoArchivio(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
 
 
-class ListaErrori(object):
+class ListaErrori(GenFePA):
     Errore = FieldObject(object_class='Errore')
 
 
-class Errore(object):
+class Errore(GenFePA):
     Codice = FieldInteger()
     Descrizione = FieldString()
 
 
-class RicevutaConsegna(object):
+class RicevutaConsegna(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
     DataOraRicezione = FieldDate()
@@ -61,12 +62,12 @@ class RicevutaConsegna(object):
     Note = FieldString()
 
 
-class Destinatario(object):
+class Destinatario(GenFePA):
     Codice = FieldString()
     Descrizione = FieldString()
 
 
-class NotificaMancataConsegna(object):
+class NotificaMancataConsegna(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
     DataOraRicezione = FieldDate()
@@ -74,7 +75,7 @@ class NotificaMancataConsegna(object):
     MessageId = FieldString()
     Note = FieldString()
 
-class MetadatiInvioFile(object):
+class MetadatiInvioFile(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
     CodiceDestinatario = FieldString()
@@ -84,7 +85,7 @@ class MetadatiInvioFile(object):
     Note = FieldString()
 
 
-class NotificaEsitoCommittente(object):
+class NotificaEsitoCommittente(GenFePA):
     IdentificativoSdI = FieldString()
     RiferimentoFattura = FieldObject(object_class='RiferimentoFattura')
     Esito = FieldString()
@@ -92,19 +93,19 @@ class NotificaEsitoCommittente(object):
     MessageIdCommittente = FieldString()
 
 
-class RiferimentoFattura(object):
+class RiferimentoFattura(GenFePA):
     NumeroFattura = FieldString()
     AnnoFattura = FieldInteger()
     PosizioneFattura = FieldInteger()
 
-class ScartoEsitoCommittente(object):
+class ScartoEsitoCommittente(GenFePA):
     IdentificativoSdI = FieldString()
     Scarto = FieldString()
     MessageId = FieldString()
     MessageIdCommittente = FieldString()
     Note = FieldString()
 
-class NotificaEsito(object):
+class NotificaEsito(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
     EsitoCommittente = FieldObject(object_class='NotificaEsitoCommittente')
@@ -112,7 +113,7 @@ class NotificaEsito(object):
     Note = FieldString()
 
 
-class NotificaDecorrenzaTermini(object):
+class NotificaDecorrenzaTermini(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
     Descrizione = FieldString()
@@ -120,7 +121,7 @@ class NotificaDecorrenzaTermini(object):
     Note = FieldString()
 
 
-class AttestazioneTrasmissioneFattura(object):
+class AttestazioneTrasmissioneFattura(GenFePA):
     IdentificativoSdI = FieldString()
     NomeFile = FieldString()
     DataOraRicezione = FieldDate()
@@ -128,3 +129,9 @@ class AttestazioneTrasmissioneFattura(object):
     MessageId = FieldString()
     Note = FieldString()
     HashFileOriginale = FieldString()
+
+test = NotificaScarto()
+test.DataOraRicezione = '2015-01-01'
+test.IdentificativoSdI = '12334'
+
+print test

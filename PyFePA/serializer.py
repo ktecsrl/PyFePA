@@ -98,6 +98,7 @@ def globalvalidation(fattura):
                     raise ValidateException('Denominazione Azienda Mancante')
         for feb in fattura.FatturaElettronicaBody:
             if feb.DatiGenerali.DatiGeneraliDocumento.Data > datetime.date.today():
+                print feb.DatiGenerali.DatiGeneraliDocumento.Data, '- TODAY -', datetime.date.today()
                 raise ValidateException('00403 - Data Fattura non puo essere nel futuro')
             for ln in feb.DatiBeniServizi.DettaglioLinee:
                 if ln.Ritenuta and not feb.DatiGenerali.DatiGeneraliDocumento.DatiRitenuta:

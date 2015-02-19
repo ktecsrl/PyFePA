@@ -126,7 +126,7 @@ def serialize(value):
 
     intercettazioni = etree.Element('Intercettazioni')
     (etree.SubElement(intercettazioni, 'ID')).text = str(value['id']) if 'id' in value else '1'
-    (etree.SubElement(intercettazioni, 'Beneficiario')).text = value['beneficiario'].strip('IT')
+    (etree.SubElement(intercettazioni, 'Beneficiario')).text = unicode(value['beneficiario'].strip('IT'))
     (etree.SubElement(intercettazioni, 'TipoPagamento')).text = value['tipopagamento']
     (etree.SubElement(intercettazioni, 'EntePagante')).text = value['entepagante']
     (etree.SubElement(intercettazioni, 'NumeroFattura')).text = value['numerofattura']
@@ -146,8 +146,8 @@ def serialize(value):
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datainizioprestazione'])
     (etree.SubElement(intercettazioni, 'DataFinePrestazione')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datafineprestazione'])
-    (etree.SubElement(intercettazioni, 'CognomeMagistrato')).text = value['cognomemagistrato']
-    (etree.SubElement(intercettazioni, 'NomeMagistrato')).text = value['nomemagistrato']
+    (etree.SubElement(intercettazioni, 'CognomeMagistrato')).text = unicode(value['cognomemagistrato'])
+    (etree.SubElement(intercettazioni, 'NomeMagistrato')).text = unicode(value['nomemagistrato'])
     (etree.SubElement(intercettazioni, 'TipoIntercettazione')).text = value['tipointercettazione']
 
     siammxml.append(intercettazioni)

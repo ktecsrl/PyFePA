@@ -1,3 +1,9 @@
+# coding=utf-8
+
+import os
+
+DPATH = os.path.dirname(os.path.abspath(__file__))
+
 try:
     import lxml.etree as ElementTree
 except ImportError:
@@ -21,11 +27,11 @@ testdata = {'beneficiario': 'IT04578140875',
             'numeromodello37': None,
             'datainizioprestazione': datetime.datetime.strptime('2014-07-31T00:00:00', '%Y-%m-%dT%H:%M:%S'),
             'datafineprestazione': datetime.datetime.strptime('2014-10-20T00:00:00', '%Y-%m-%dT%H:%M:%S'),
-            'nomemagistrato': 'Stefano',
+            'nomemagistrato': 'Stefanò'.decode('utf-8'),
             'cognomemagistrato': 'Luciani',
             'tipointercettazione': 'C'}
 
-with open('./PyFePA/test/IT04578140875_00002.xml', 'rt') as f:
+with open(DPATH+'/PyFePA/test/IT01234567890_11001.xml', 'rt') as f:
     tree = ElementTree.parse(f)
     fe = serializer.deserialize(element=tree)
     print serializer.serializer(fe,'xml')

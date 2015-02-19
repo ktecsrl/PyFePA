@@ -28,3 +28,8 @@ Description
 ~~~~~~~~~~~
 
 Mapping to python object of italian FatturaPA XML schema.
+
+Usage
+~~~~~
+
+See ./examples/odoo_fatturapa.py and ./runit.py for simple mapping and use

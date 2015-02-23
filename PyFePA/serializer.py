@@ -137,8 +137,12 @@ def serializexml(invoice_part,tagname):
 
     for k in sorted(taglist):
         if isinstance(taglist[k]['value'], list):
-            for t in taglist[k]['value']:
-                fe.append(serializexml(t, taglist[k]['tag']))
+            if taglist[k]['type'] == 'S':
+                for t in taglist[k]['value']:
+                    (ElementTree.SubElement(fe, taglist[k]['tag'])).text = t
+            else:
+                for t in taglist[k]['value']:
+                    fe.append(serializexml(t, taglist[k]['tag']))
         elif taglist[k]['type'] == 'S' and taglist[k]['value'] is not None:
             (ElementTree.SubElement(fe, taglist[k]['tag'])).text = taglist[k]['value']
         elif taglist[k]['type'] == 'O' and taglist[k]['value'] is not None:

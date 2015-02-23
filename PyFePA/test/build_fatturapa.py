@@ -143,7 +143,7 @@ class FatturaPA(object):
         #dg.DatiGeneraliDocumento.ScontoMaggiorazione.Importo = None
         dg.DatiGeneraliDocumento.ImportoTotaleDocumento = 1220000
         #dg.DatiGeneraliDocumento.Arrotondamento = None
-        dg.DatiGeneraliDocumento.Causale = 'Test PyFePA'
+        dg.DatiGeneraliDocumento.Causale = ['Test PyFePA','Pippo']
 
         return dg
 

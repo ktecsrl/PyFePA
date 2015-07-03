@@ -80,7 +80,12 @@ class GenFePA(object):
                                 self.__setattr__(k, c)
                             element.remove(t)
                         else:
-                            self.__setattr__(k, t.text)
+                            if v.multi and self.__getattribute__(k) is None:
+                                self.__setattr__(k,[t.text])
+                            elif v.multi:
+                                self.__getattribute__(k).append(t.text)
+                            else:
+                                self.__setattr__(k, t.text)
                             element.remove(t)
                 elif len(tagg) != 0:
                     raise ValueError()
@@ -296,8 +301,8 @@ class DatiCassaPrevidenziale(GenFePA):
 
 class DatiOrdineAcquisto(GenFePA):
 
-    IdDocumento = FieldString(minlen=1, maxlen=20, required=True, code=1)
-    RiferimentoNumeroLinea = FieldInteger(minlen=1, maxlen=4, code=2)
+    RiferimentoNumeroLinea = FieldInteger(minlen=1, maxlen=4, code=1)
+    IdDocumento = FieldString(minlen=1, maxlen=20, required=True, code=2)
     Data = FieldDate(code=3)
     NumItem = FieldString(minlen=1, maxlen=20, code=4)
     CodiceCommessaConvenzione = FieldString(minlen=1, maxlen=100, code=5)

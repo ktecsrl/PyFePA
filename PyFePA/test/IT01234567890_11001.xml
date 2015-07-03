@@ -61,10 +61,9 @@
         <IdDocumento>66685</IdDocumento>
         <NumItem>1</NumItem>
         <CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
+	    <CodiceCIG>456def</CodiceCIG>
       </DatiOrdineAcquisto>
       <DatiContratto>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
 	<IdDocumento>123</IdDocumento>
 	<Data>2012-09-01</Data>
 	<NumItem>5</NumItem>
@@ -72,14 +71,12 @@
 	<CodiceCIG>456def</CodiceCIG>
       </DatiContratto>
       <DatiConvenzione>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
 	<IdDocumento>123</IdDocumento>
 	<NumItem>5</NumItem>
 	<CodiceCUP>123abc</CodiceCUP>
 	<CodiceCIG>456def</CodiceCIG>
       </DatiConvenzione>
       <DatiRicezione>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
 	<IdDocumento>123</IdDocumento>
 	<NumItem>5</NumItem>
 	<CodiceCUP>123abc</CodiceCUP>
@@ -95,14 +92,14 @@
 	    <Denominazione>Trasporto spa</Denominazione>
 	  </Anagrafica>
 	</DatiAnagraficiVettore>
-	<DataOraConsegna>2012-10-22T16:46:12.000+02:00</DataOraConsegna>
       </DatiTrasporto>
     </DatiGenerali>
     <DatiBeniServizi>
       <DettaglioLinee>
         <NumeroLinea>1</NumeroLinea>
-        <Descrizione>LA DESCRIZIONE DELLA FORNITURA PUO' SUPERARE I CENTO CARATTERI CHE RAPPRESENTAVANO IL PRECEDENTE LIMITE DIMENSIONALE. TALE LIMITE NELLA NUOVA VERSIONE E' STATO PORTATO A MILLE CARATTERI</Descrizione>
+        <Descrizione>LA DESCRIZIONE DELLA FORNITURA èàè àù PUO' SUPERARE I CENTO CARATTERI CHE RAPPRESENTAVANO IL PRECEDENTE LIMITE DIMENSIONALE. TALE LIMITE NELLA NUOVA VERSIONE E' STATO PORTATO A MILLE CARATTERI</Descrizione>
         <Quantita>5.00</Quantita>
+        <UnitaMisura>Unità</UnitaMisura>
         <PrezzoUnitario>1.00</PrezzoUnitario>
         <PrezzoTotale>5.00</PrezzoTotale>
         <AliquotaIVA>22.00</AliquotaIVA>

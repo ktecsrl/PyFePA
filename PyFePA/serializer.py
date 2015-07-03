@@ -156,14 +156,12 @@ def serializer(obj,toformat,**kwargs):
         globalvalidation(obj)
         ser = serializexml(obj,'FatturaElettronica')
         if lxml:
-            '''
-            #Da Verificare, troppo tempo a ricevere gli allegati XSD e da errore
             with open(DPATH+'/xsd/fatturapa_v1.1.xsd', 'rt') as f:
                 xmlschema_doc = ElementTree.parse(f)
                 xmlschema = ElementTree.XMLSchema(xmlschema_doc)
                 if not xmlschema.validate(ser):
-                    raise ValidateException('XSD validation Exception')
-            '''
+                    raise ValidateException('XSD validation Exception: '+str(xmlschema.error_log))
+
             return ElementTree.tostring(ser, xml_declaration=True, encoding='UTF-8', pretty_print=True)
         else:
             return ElementTree.tostring(ser, encoding='UTF-8')

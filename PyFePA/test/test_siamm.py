@@ -34,6 +34,7 @@ testdata = {'beneficiario': 'IT04578140875',
             'numerofattura': 'E021',
             'registro': 'NOTI',
             'datafattura': datetime.datetime.strptime('2014-11-28T00:00:00', '%Y-%m-%dT%H:%M:%S'),
+            'dataemissioneprovv': datetime.datetime.strptime('2014-11-28T00:00:00', '%Y-%m-%dT%H:%M:%S'),
             'importototale': 14480.00,
             'importoiva': 3185.60,
             'nr_rg': '000001/2012',
@@ -121,6 +122,11 @@ class SiammInputTest(unittest.TestCase):
         ser = siamm.serialize(testdata)
         self.assertIsInstance(ser, str)
         #: self.assertEqual(xmldata,ser)
+
+    def testSerualizationList(self):
+        serlist = [testdata,testdata,testdata]
+        ser = siamm.serialize(serlist)
+        self.assertIsInstance(ser, str)
 
     def testpiva(self):
         """piva should not fail"""

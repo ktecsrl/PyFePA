@@ -105,24 +105,9 @@ def validate(value):
         raise ValidateException(err)
 
 
-def serialize(value):
+def _siam_serialize(value):
 
     validate(value)
-
-    NSMAP = {'od': 'urn:schemas-microsoft-com:officedata',
-             'xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
-
-    #: lxml and ElementTree support, different namespace definition
-    #: try find better solution
-
-    if lxml:
-        siammxml = etree.Element('dataroot', nsmap = NSMAP)
-        siammxml.set('{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation','Intercettazioni.xsd')
-    else:
-        siammxml = etree.Element('dataroot')
-        siammxml.set('xmlns:od', 'urn:schemas-microsoft-com:officedata')
-        siammxml.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
-        siammxml.set('xsi:noNamespaceSchemaLocation', 'Intercettazioni.xsd')
 
     intercettazioni = etree.Element('Intercettazioni')
     (etree.SubElement(intercettazioni, 'ID')).text = str(value['id']) if 'id' in value else '1'
@@ -130,7 +115,8 @@ def serialize(value):
     (etree.SubElement(intercettazioni, 'TipoPagamento')).text = value['tipopagamento']
     (etree.SubElement(intercettazioni, 'EntePagante')).text = value['entepagante']
     (etree.SubElement(intercettazioni, 'NumeroFattura')).text = value['numerofattura']
-    (etree.SubElement(intercettazioni, 'DataEmissioneProvv')).text = ''
+    (etree.SubElement(intercettazioni, 'DataEmissioneProvv')).text = \
+        "{:%Y-%m-%dT%H:%M:%S}".format(value['dataemissioneprovv']) if 'dataemissioneprovv' in value else ''
     (etree.SubElement(intercettazioni, 'NumeroModello37')).text = \
         value['numeromodello37'] if 'numeromodello37' in value else None
     (etree.SubElement(intercettazioni, 'Registro')).text = value['registro']
@@ -150,7 +136,32 @@ def serialize(value):
     (etree.SubElement(intercettazioni, 'NomeMagistrato')).text = unicode(value['nomemagistrato'])
     (etree.SubElement(intercettazioni, 'TipoIntercettazione')).text = value['tipointercettazione']
 
-    siammxml.append(intercettazioni)
+    return intercettazioni
+
+
+
+def serialize(value):
+
+    NSMAP = {'od': 'urn:schemas-microsoft-com:officedata',
+             'xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
+
+    #: lxml and ElementTree support, different namespace definition
+    #: try find better solution
+
+    if lxml:
+        siammxml = etree.Element('dataroot', nsmap = NSMAP)
+        siammxml.set('{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation','Intercettazioni.xsd')
+    else:
+        siammxml = etree.Element('dataroot')
+        siammxml.set('xmlns:od', 'urn:schemas-microsoft-com:officedata')
+        siammxml.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+        siammxml.set('xsi:noNamespaceSchemaLocation', 'Intercettazioni.xsd')
+
+    if isinstance(value, (list, tuple)):
+        for interc in value:
+            siammxml.append(_siam_serialize(interc))
+    else:
+        siammxml.append(_siam_serialize(value))
 
     if lxml:
         return etree.tostring(siammxml, xml_declaration=True, encoding='UTF-8', pretty_print=True)

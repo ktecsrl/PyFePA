@@ -36,5 +36,5 @@ with open(DPATH+'/PyFePA/test/IT01234567890_11001.xml', 'rt') as f:
     fe = serializer.deserialize(element=tree)
     print serializer.serializer(fe,'xml')
 
-testdata.pop('nr_rg')
-print siamm.serialize(testdata)
+testdata_list = [testdata,testdata,testdata]
+print siamm.serialize(testdata_list)

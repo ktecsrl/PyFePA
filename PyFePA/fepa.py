@@ -377,10 +377,10 @@ class DatiTrasporto(GenFePA):
     PesoLordo = FieldDecimal(minlen=4, maxlen=7, code=7)
     PesoNetto = FieldDecimal(minlen=4, maxlen=7, code=8)
     DataOraRitiro = FieldDate(code=9)
-    DataInizioTrasporto = FieldDate(code=10)
+    DataInizioTrasporto = FieldDateTime(code=10)
     TipoResa = FieldString(minlen=3, maxlen=3, code=11)
     IndirizzoResa = FieldObject(object_class='IndirizzoResa', code=12)
-    DataOraConsegna = FieldDate(code=13)
+    DataOraConsegna = FieldDateTime(code=13)
 
 
 class DatiAnagraficiVettore(GenFePA):

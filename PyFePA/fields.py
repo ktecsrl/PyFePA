@@ -17,6 +17,7 @@
 
 import datetime
 import importlib
+import dateutil.parser
 
 
 class FieldType(object):
@@ -174,6 +175,23 @@ class FieldDate(FieldType):
     @classmethod
     def tostring(cls,value):
         return str(value)
+
+class FieldDateTime(FieldType):
+
+    type = 'S'
+
+    def validate(self, value):
+        try:
+            if isinstance(value, datetime.datetime):
+                return value
+            elif dateutil.parser.parse(value):
+                return dateutil.parser.parse(value)
+        except Exception:
+            return super(FieldDateTime,self).validate(value)
+
+    @classmethod
+    def tostring(cls,value):
+        return value.isoformat()
 
 
 class FieldObject(FieldType):

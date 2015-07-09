@@ -21,6 +21,7 @@ from PyFePA import fields
 from PyFePA import fepa
 import unittest
 import datetime
+import dateutil.parser
 
 tdatetime = datetime.datetime.today()
 tdate = datetime.date.today()
@@ -56,6 +57,19 @@ class fepaTest(unittest.TestCase):
         self.assertEqual(False, sf.validate(tobj))
         self.assertEqual(False, sf.validate(tconst))
         self.assertEqual(datetime.date(2015,1,1),sf.validate('2015-01-01'))
+        self.assertEqual(False,sf.validate('2015-13-01'))
+
+    def testFieldDateTime(self):
+        sf = fields.FieldDateTime(required=True, minlen=1, maxlen=6)
+        self.assertEqual(False, sf.validate(tstr))
+        self.assertEqual(False, sf.validate(tdate))
+        self.assertEqual(tdatetime, sf.validate(tdatetime))
+        self.assertEqual(False, sf.validate(tint))
+        self.assertEqual(False, sf.validate(tdec))
+        self.assertEqual(False, sf.validate(tobj))
+        self.assertEqual(False, sf.validate(tconst))
+        self.assertEqual(dateutil.parser.parse('2012-10-22T16:46:12.000+02:00'),
+                         sf.validate('2012-10-22T16:46:12.000+02:00'))
         self.assertEqual(False,sf.validate('2015-13-01'))
 
     def testFieldInteger(self):

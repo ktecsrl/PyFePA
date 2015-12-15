@@ -35,7 +35,7 @@ RG = ('M8P', 'M9P', 'M10P', 'M11P', 'M12P', 'M13P', 'M14P', 'M15P', 'NOTI', 'NOT
       'M35P', 'M36P', 'M37P', 'M38P', 'M39P', 'M40P', 'M42P', 'IGN', 'M45P','M46P',
       'M52P', 'M53P', 'M54P', 'MAIP')
 
-TI = ('A', 'B', 'C', 'I', 'D', 'T', 'M', 'N')
+TI = ('A', 'B', 'C', 'I', 'D', 'T', 'M', 'N', 'GPS')
 
 
 class ValidateException(Exception):
@@ -109,32 +109,32 @@ def _siam_serialize(value):
 
     validate(value)
 
-    intercettazioni = etree.Element('Intercettazioni')
+    intercettazioni = etree.Element('INTERCETTAZIONI')
     (etree.SubElement(intercettazioni, 'ID')).text = str(value['id']) if 'id' in value else '1'
-    (etree.SubElement(intercettazioni, 'Beneficiario')).text = unicode(value['beneficiario'].strip('IT'))
-    (etree.SubElement(intercettazioni, 'TipoPagamento')).text = value['tipopagamento']
-    (etree.SubElement(intercettazioni, 'EntePagante')).text = value['entepagante']
-    (etree.SubElement(intercettazioni, 'NumeroFattura')).text = value['numerofattura']
-    (etree.SubElement(intercettazioni, 'DataEmissioneProvv')).text = \
+    (etree.SubElement(intercettazioni, 'BENEFICIARIO')).text = unicode(value['beneficiario'].strip('IT'))
+    (etree.SubElement(intercettazioni, 'TIPOPAGAMENTO')).text = value['tipopagamento']
+    (etree.SubElement(intercettazioni, 'ENTEPAGANTE')).text = value['entepagante']
+    (etree.SubElement(intercettazioni, 'NUMEROFATTURA')).text = value['numerofattura']
+    (etree.SubElement(intercettazioni, 'DATAEMISSIONEPROVV')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['dataemissioneprovv']) if 'dataemissioneprovv' in value else ''
-    (etree.SubElement(intercettazioni, 'NumeroModello37')).text = \
+    (etree.SubElement(intercettazioni, 'NUMEROMODELLO37')).text = \
         value['numeromodello37'] if 'numeromodello37' in value else None
-    (etree.SubElement(intercettazioni, 'Registro')).text = value['registro']
-    (etree.SubElement(intercettazioni, 'DataFattura')).text = \
+    (etree.SubElement(intercettazioni, 'REGISTRO')).text = value['registro']
+    (etree.SubElement(intercettazioni, 'DATAFATTURA')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datafattura'])
-    (etree.SubElement(intercettazioni, 'ImportoTotale')).text = \
+    (etree.SubElement(intercettazioni, 'IMPORTOTOTALE')).text = \
         '{:.2f}'.format(float(value['importototale']))
-    (etree.SubElement(intercettazioni, 'ImportoIVA')).text = \
+    (etree.SubElement(intercettazioni, 'IMPORTOIVA')).text = \
         '{:.2f}'.format(float(value['importoiva']))
     (etree.SubElement(intercettazioni, 'NR_RG')).text = value['nr_rg'] if 'nr_rg' in value else None
-    (etree.SubElement(intercettazioni, 'Sede')).text = value['sede']
-    (etree.SubElement(intercettazioni, 'DataInizioPrestazione')).text = \
+    (etree.SubElement(intercettazioni, 'SEDE')).text = value['sede']
+    (etree.SubElement(intercettazioni, 'DATAINIZIOPRESTAZIONE')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datainizioprestazione'])
-    (etree.SubElement(intercettazioni, 'DataFinePrestazione')).text = \
+    (etree.SubElement(intercettazioni, 'DATAFINEPRESTAZIONE')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datafineprestazione'])
-    (etree.SubElement(intercettazioni, 'CognomeMagistrato')).text = unicode(value['cognomemagistrato'])
-    (etree.SubElement(intercettazioni, 'NomeMagistrato')).text = unicode(value['nomemagistrato'])
-    (etree.SubElement(intercettazioni, 'TipoIntercettazione')).text = value['tipointercettazione']
+    (etree.SubElement(intercettazioni, 'COGNOMEMAGISTRATO')).text = unicode(value['cognomemagistrato'])
+    (etree.SubElement(intercettazioni, 'NOMEMAGISTRATO')).text = unicode(value['nomemagistrato'])
+    (etree.SubElement(intercettazioni, 'TIPOINTERCETTAZIONE')).text = value['tipointercettazione']
 
     return intercettazioni
 

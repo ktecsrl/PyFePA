@@ -146,7 +146,7 @@ class SiammInputTest(unittest.TestCase):
         ser = siamm.serialize(errordata)
         idint = True if ser.find('<ID>1</ID>') != -1 else False
         nrrg = True if (ser.find('<NR_RG/>') != -1  or ser.find('<NR_RG />') != -1) else False
-        mod37 = True if (ser.find('<NumeroModello37 />') != -1 or ser.find('<NumeroModello37/>') != -1) else False
+        mod37 = True if (ser.find('<NUMEROMODELLO37 />') != -1 or ser.find('<NUMEROMODELLO37/>') != -1) else False
         self.assertEqual(True,idint)
         self.assertEqual(True,nrrg)
         self.assertEqual(True,mod37)

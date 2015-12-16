@@ -26,7 +26,6 @@ setup(
   description = 'Python object of italian FatturaPA, serialize, deserialize and verify',
   author = 'Luigi Di Naro',
   author_email = 'Luigi.DiNaro@ktec.it',
-  home_page = 'http://www.ktec.it/fatturapa',
   url = 'https://github.com/ktecsrl/PyFePA',
   download_url = 'https://github.com/ktecsrl/PyFePA/tarball/1.0.1',
   keywords = ['FatturaPA', 'financial', 'utils'],

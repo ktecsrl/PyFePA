@@ -109,7 +109,7 @@ def _siam_serialize(value):
 
     validate(value)
 
-    intercettazioni = etree.Element('INTERCETTAZIONI')
+    intercettazioni = etree.Element('Intercettazioni')
     (etree.SubElement(intercettazioni, 'ID')).text = str(value['id']) if 'id' in value else '1'
     (etree.SubElement(intercettazioni, 'BENEFICIARIO')).text = unicode(value['beneficiario'].strip('IT'))
     (etree.SubElement(intercettazioni, 'TIPOPAGAMENTO')).text = value['tipopagamento']

@@ -143,6 +143,7 @@ class FieldDecimal(FieldType):
             elif self.minlen <= len('{:.2f}'.format(float(value))) <= self.maxlen:
                 return float(value)
         except(ValueError, TypeError):
+            print 'DEBUG- ', value
             return False
 
     def __init__(self, **kwargs):

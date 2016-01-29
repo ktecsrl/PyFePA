@@ -101,7 +101,7 @@
         <Descrizione>LA DESCRIZIONE DELLA FORNITURA èàè àù PUO' SUPERARE I CENTO CARATTERI CHE RAPPRESENTAVANO IL PRECEDENTE LIMITE DIMENSIONALE. TALE LIMITE NELLA NUOVA VERSIONE E' STATO PORTATO A MILLE CARATTERI</Descrizione>
         <Quantita>5.00</Quantita>
         <UnitaMisura>Unita</UnitaMisura>
-        <PrezzoUnitario>1.00</PrezzoUnitario>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
         <PrezzoTotale>5.00</PrezzoTotale>
         <AliquotaIVA>22.00</AliquotaIVA>
       </DettaglioLinee>

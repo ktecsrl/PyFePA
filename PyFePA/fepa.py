@@ -45,7 +45,7 @@ class GenFePA(object):
         try:
             validator = self.__class__.__dict__[item]
             vval = validator.validate(value)
-            if vval:
+            if vval or vval == 0:
                 super(GenFePA, self).__setattr__(item,vval)
             else:
                 raise ValueError('Value {0} not allowed in {1}.{2}'.format(value,self.__class__,item))

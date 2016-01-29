@@ -43,7 +43,7 @@ def validate(invoice_part):
             value = invoice_part.__getattribute__(k)
             if value:
                 value = value if isinstance(v,FieldObject) or (isinstance(value,list) and v.multi) else v.tostring(value)
-            if not value and v.required and not v.conflict:
+            if not (value or value == 0) and v.required and not v.conflict:
                 raise ValidateException('Missing required value on {0}.{1}'.format(invoice_part.__class__.__name__, k))
             taglist[v.code] = {'tag': k, 'value': value, 'type': v.type, 'depend': v.depend,
                                'conflict': v.conflict, 'required': v.required}

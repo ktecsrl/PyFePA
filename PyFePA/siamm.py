@@ -109,32 +109,34 @@ def _siam_serialize(value):
 
     validate(value)
 
-    intercettazioni = etree.Element('Intercettazioni')
-    (etree.SubElement(intercettazioni, 'ID')).text = str(value['id']) if 'id' in value else '1'
-    (etree.SubElement(intercettazioni, 'BENEFICIARIO')).text = unicode(value['beneficiario'].strip('IT'))
-    (etree.SubElement(intercettazioni, 'TIPOPAGAMENTO')).text = value['tipopagamento']
-    (etree.SubElement(intercettazioni, 'ENTEPAGANTE')).text = value['entepagante']
-    (etree.SubElement(intercettazioni, 'NUMEROFATTURA')).text = value['numerofattura']
-    (etree.SubElement(intercettazioni, 'DATAEMISSIONEPROVV')).text = \
-        "{:%Y-%m-%dT%H:%M:%S}".format(value['dataemissioneprovv']) if 'dataemissioneprovv' in value else ''
-    (etree.SubElement(intercettazioni, 'NUMEROMODELLO37')).text = \
-        value['numeromodello37'] if 'numeromodello37' in value else None
-    (etree.SubElement(intercettazioni, 'REGISTRO')).text = value['registro']
-    (etree.SubElement(intercettazioni, 'DATAFATTURA')).text = \
-        "{:%Y-%m-%dT%H:%M:%S}".format(value['datafattura'])
-    (etree.SubElement(intercettazioni, 'IMPORTOTOTALE')).text = \
-        '{:.2f}'.format(float(value['importototale']))
-    (etree.SubElement(intercettazioni, 'IMPORTOIVA')).text = \
-        '{:.2f}'.format(float(value['importoiva']))
-    (etree.SubElement(intercettazioni, 'NR_RG')).text = value['nr_rg'] if 'nr_rg' in value else None
-    (etree.SubElement(intercettazioni, 'SEDE')).text = value['sede']
+    intercettazioni = etree.Element('INTERCETTAZIONI')
+    (etree.SubElement(intercettazioni, 'ID')).text = str(value['id']).upper() if 'id' in value else '1'
+    (etree.SubElement(intercettazioni, 'BENEFICIARIO')).text = unicode(value['beneficiario'].strip('IT')).upper()
+    (etree.SubElement(intercettazioni, 'TIPOPAGAMENTO')).text = value['tipopagamento'].upper()
+    (etree.SubElement(intercettazioni, 'ENTEPAGANTE')).text = value['entepagante'].upper()
     (etree.SubElement(intercettazioni, 'DATAINIZIOPRESTAZIONE')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datainizioprestazione'])
     (etree.SubElement(intercettazioni, 'DATAFINEPRESTAZIONE')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datafineprestazione'])
-    (etree.SubElement(intercettazioni, 'COGNOMEMAGISTRATO')).text = unicode(value['cognomemagistrato'])
-    (etree.SubElement(intercettazioni, 'NOMEMAGISTRATO')).text = unicode(value['nomemagistrato'])
-    (etree.SubElement(intercettazioni, 'TIPOINTERCETTAZIONE')).text = value['tipointercettazione']
+    (etree.SubElement(intercettazioni, 'NR_RG')).text = value['nr_rg'] if 'nr_rg' in value else None
+    (etree.SubElement(intercettazioni, 'REGISTRO')).text = value['registro'].upper()
+    (etree.SubElement(intercettazioni, 'SEDE')).text = value['sede'].upper()
+    (etree.SubElement(intercettazioni, 'IMPORTOTOTALE')).text = \
+        '{:.2f}'.format(float(value['importototale']))
+    (etree.SubElement(intercettazioni, 'IMPORTOIVA')).text = \
+        '{:.2f}'.format(float(value['importoiva']))
+    (etree.SubElement(intercettazioni, 'NUMEROFATTURA')).text = value['numerofattura'].upper()
+    (etree.SubElement(intercettazioni, 'DATAFATTURA')).text = \
+        "{:%Y-%m-%dT%H:%M:%S}".format(value['datafattura'])
+    if not value['tipointercettazione'] == 'GPS':
+        (etree.SubElement(intercettazioni, 'NUMEROMODELLO37')).text = \
+            value['numeromodello37'] if 'numeromodello37' in value else None
+    (etree.SubElement(intercettazioni, 'TIPOINTERCETTAZIONE')).text = value['tipointercettazione'].upper()
+    (etree.SubElement(intercettazioni, 'NOMEMAGISTRATO')).text = unicode(value['nomemagistrato']).upper()
+    (etree.SubElement(intercettazioni, 'COGNOMEMAGISTRATO')).text = unicode(value['cognomemagistrato']).upper()
+    (etree.SubElement(intercettazioni, 'DATAEMISSIONEPROVV')).text = \
+        "{:%Y-%m-%dT%H:%M:%S}".format(value['dataemissioneprovv']) if 'dataemissioneprovv' in value \
+                                                                      and value['dataemissioneprovv'] != '' else ''
 
     return intercettazioni
 

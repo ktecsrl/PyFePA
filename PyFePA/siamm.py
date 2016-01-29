@@ -66,7 +66,7 @@ def validate(value):
 
     err = ''
 
-    if 'beneficiario' not in value or not piva(value['beneficiario']):
+    if 'beneficiario' not in value:
         err = err + 'Volore errato per beneficiario '
     elif 'tipopagamento' not in value or value['tipopagamento'] not in TP:
         err = err + 'Volore errato per tipopagamento '

@@ -138,6 +138,16 @@ class SiammInputTest(unittest.TestCase):
         prot = siamm.validateprot('124/2014')
         self.assertEqual(True,prot)
 
+    def testvalidateprot2(self):
+        """validateprot should fail"""
+        prot = siamm.validateprot('124/14')
+        self.assertEqual(False,prot)
+
+    def testfillprot(self):
+        """validateprot should not fail"""
+        prot = siamm.fillprot('124/2014')
+        self.assertEqual('000124/2014',prot)
+
     def testSerializationOptional(self):
         """validate serialization whit opts None"""
         errordata = testdata.copy()

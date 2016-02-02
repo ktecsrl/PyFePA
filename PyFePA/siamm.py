@@ -47,11 +47,20 @@ def validateprot(value):
     try:
         if len(value) <= 11 and len(value.split('/')) == 2 \
                 and value.split('/')[0].isdigit() \
-                and value.split('/')[1].isdigit():
+                and value.split('/')[1].isdigit() and len(value.split('/')[1]) == 4:
             return True
     except:
         return False
     return False
+
+def fillprot(value):
+
+    if value:
+        part1 = '%06d' % int(value.split('/')[0])
+        return part1+'/'+value.split('/')[1]
+    else:
+        return value
+
 
 
 def is_number(s):
@@ -66,7 +75,7 @@ def validate(value):
 
     err = ''
 
-    if 'beneficiario' not in value:
+    if 'beneficiario' not in value or value['beneficiario'] is None:
         err = err + 'Volore errato per beneficiario '
     elif 'tipopagamento' not in value or value['tipopagamento'] not in TP:
         err = err + 'Volore errato per tipopagamento '
@@ -118,7 +127,7 @@ def _siam_serialize(value):
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datainizioprestazione'])
     (etree.SubElement(intercettazioni, 'DATAFINEPRESTAZIONE')).text = \
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datafineprestazione'])
-    (etree.SubElement(intercettazioni, 'NR_RG')).text = value['nr_rg'] if 'nr_rg' in value else None
+    (etree.SubElement(intercettazioni, 'NR_RG')).text = fillprot(value['nr_rg']) if 'nr_rg' in value else None
     (etree.SubElement(intercettazioni, 'REGISTRO')).text = value['registro'].upper()
     (etree.SubElement(intercettazioni, 'SEDE')).text = value['sede'].upper()
     (etree.SubElement(intercettazioni, 'IMPORTOTOTALE')).text = \
@@ -130,7 +139,7 @@ def _siam_serialize(value):
         "{:%Y-%m-%dT%H:%M:%S}".format(value['datafattura'])
     if not value['tipointercettazione'] == 'GPS':
         (etree.SubElement(intercettazioni, 'NUMEROMODELLO37')).text = \
-            value['numeromodello37'] if 'numeromodello37' in value else None
+            fillprot(value['numeromodello37']) if 'numeromodello37' in value else None
     (etree.SubElement(intercettazioni, 'TIPOINTERCETTAZIONE')).text = value['tipointercettazione'].upper()
     (etree.SubElement(intercettazioni, 'NOMEMAGISTRATO')).text = unicode(value['nomemagistrato']).upper()
     (etree.SubElement(intercettazioni, 'COGNOMEMAGISTRATO')).text = unicode(value['cognomemagistrato']).upper()

@@ -120,18 +120,20 @@ def serializexml(invoice_part,tagname):
     #: lxml and ElementTree support, different namespace definition
     #: try find better solution
 
-    if tagname == 'FatturaElettronica' and lxml:
-        NSMAP = {'ds': 'http://www.w3.org/2000/09/xmldsig#',
-                 'p': 'http://www.fatturapa.gov.it/sdi/fatturapa/v1.1',
-                 'xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
-        fe = ElementTree.Element('{http://www.fatturapa.gov.it/sdi/fatturapa/v1.1}'+tagname, nsmap = NSMAP)
-        fe.set('versione', '1.1')
-    elif tagname == 'FatturaElettronica':
-        fe = ElementTree.Element('p:'+tagname)
-        fe.set('versione', '1.1')
-        fe.set('xmlns:ds', 'http://www.w3.org/2000/09/xmldsig#')
-        fe.set('xmlns:p', 'http://www.fatturapa.gov.it/sdi/fatturapa/v1.1')
-        fe.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+    if tagname == 'FatturaElettronica':
+        versione = invoice_part.FatturaElettronicaHeader.DatiTrasmissione.FormatoTrasmissione
+        if lxml:
+            NSMAP = {'ds': 'http://www.w3.org/2000/09/xmldsig#',
+                     'p': 'http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2',
+                     'xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
+            fe = ElementTree.Element('{http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2}'+tagname, nsmap = NSMAP)
+            fe.set('versione', versione)
+        else:
+            fe = ElementTree.Element('p:'+tagname)
+            fe.set('versione', versione)
+            fe.set('xmlns:ds', 'http://www.w3.org/2000/09/xmldsig#')
+            fe.set('xmlns:p', 'http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2')
+            fe.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
     else:
         fe = ElementTree.Element(tagname)
 

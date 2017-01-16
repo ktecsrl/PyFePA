@@ -27,7 +27,7 @@ setup(
   author = 'Luigi Di Naro',
   author_email = 'Luigi.DiNaro@ktec.it',
   url = 'https://github.com/ktecsrl/PyFePA',
-  download_url = 'https://github.com/ktecsrl/PyFePA/tarball/1.2.1b',
+  download_url = 'https://github.com/ktecsrl/PyFePA/tarball/1.2.1b2',
   keywords = ['FatturaPA', 'financial', 'utils'],
   platforms= 'OSX, *unix, win',
   package_data = {'PyFePA' : files },

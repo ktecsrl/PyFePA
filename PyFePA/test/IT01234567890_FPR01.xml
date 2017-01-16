@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<p:FatturaElettronica versione="1.1" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://www.fatturapa.gov.it/sdi/fatturapa/v1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd ">
   <FatturaElettronicaHeader>
     <DatiTrasmissione>
       <IdTrasmittente>
         <IdPaese>IT</IdPaese>
-        <IdCodice>00000000000</IdCodice>
+        <IdCodice>12345670017</IdCodice>
       </IdTrasmittente>
       <ProgressivoInvio>00001</ProgressivoInvio>
-      <FormatoTrasmissione>SDI11</FormatoTrasmissione>
-      <CodiceDestinatario>AAAAAA</CodiceDestinatario>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>ABC1234</CodiceDestinatario>
       <ContattiTrasmittente/>
     </DatiTrasmissione>
     <CedentePrestatore>
       <DatiAnagrafici>
         <IdFiscaleIVA>
           <IdPaese>IT</IdPaese>
-          <IdCodice>00000000000</IdCodice>
+          <IdCodice>01234567890</IdCodice>
         </IdFiscaleIVA>
         <Anagrafica>
           <Denominazione>SOCIETA' ALPHA SRL</Denominazione>
         </Anagrafica>
-        <RegimeFiscale>RF01</RegimeFiscale>
+        <RegimeFiscale>RF19</RegimeFiscale>
       </DatiAnagrafici>
       <Sede>
         <Indirizzo>VIALE ROMA 543</Indirizzo>
@@ -34,7 +37,7 @@
       <DatiAnagrafici>
         <CodiceFiscale>09876543210</CodiceFiscale>
         <Anagrafica>
-          <Denominazione>AMMINISTRAZIONE BETA</Denominazione>
+          <Denominazione>DITTA BETA</Denominazione>
         </Anagrafica>
       </DatiAnagrafici>
       <Sede>
@@ -60,66 +63,42 @@
         <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
         <IdDocumento>66685</IdDocumento>
         <NumItem>1</NumItem>
-        <CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
       </DatiOrdineAcquisto>
       <DatiContratto>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
-	<IdDocumento>123</IdDocumento>
-	<Data>2012-09-01</Data>
-	<NumItem>5</NumItem>
-	<CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
+	    <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+	    <IdDocumento>123</IdDocumento>
+	    <Data>2012-09-01</Data>
+	    <NumItem>5</NumItem>
+	    <CodiceCUP>123abc</CodiceCUP>
+	    <CodiceCIG>456def</CodiceCIG>
       </DatiContratto>
-      <DatiConvenzione>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
-	<IdDocumento>123</IdDocumento>
-	<NumItem>5</NumItem>
-	<CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
-      </DatiConvenzione>
-      <DatiRicezione>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
-	<IdDocumento>123</IdDocumento>
-	<NumItem>5</NumItem>
-	<CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
-      </DatiRicezione>
       <DatiTrasporto>
-	<DatiAnagraficiVettore>				
-	  <IdFiscaleIVA>
-	    <IdPaese>IT</IdPaese>
-	    <IdCodice>00000000000</IdCodice>
-	  </IdFiscaleIVA>
+	    <DatiAnagraficiVettore>				
+	      <IdFiscaleIVA>
+	        <IdPaese>IT</IdPaese>
+	        <IdCodice>24681012141</IdCodice>
+	      </IdFiscaleIVA>
     	  <Anagrafica>
-	    <Denominazione>Trasporto spa</Denominazione>
-	  </Anagrafica>
-	</DatiAnagraficiVettore>
-	<DataOraConsegna>2012-10-22T16:46:12.000+02:00</DataOraConsegna>
+	        <Denominazione>Trasporto spa</Denominazione>
+	      </Anagrafica>
+	    </DatiAnagraficiVettore>
+	    <DataOraConsegna>2012-10-22T16:46:12.000+02:00</DataOraConsegna>
       </DatiTrasporto>
     </DatiGenerali>
     <DatiBeniServizi>
       <DettaglioLinee>
         <NumeroLinea>1</NumeroLinea>
-        <Descrizione>LA DESCRIZIONE DELLA FORNITURA PUO' SUPERARE I CENTO CARATTERI CHE RAPPRESENTAVANO IL PRECEDENTE LIMITE DIMENSIONALE. TALE LIMITE NELLA NUOVA VERSIONE E' STATO PORTATO A MILLE CARATTERI</Descrizione>
+        <Descrizione>DESCRIZIONE DELLA FORNITURA</Descrizione>
         <Quantita>5.00</Quantita>
         <PrezzoUnitario>1.00</PrezzoUnitario>
         <PrezzoTotale>5.00</PrezzoTotale>
         <AliquotaIVA>22.00</AliquotaIVA>
       </DettaglioLinee>
-      <DettaglioLinee>
-        <NumeroLinea>2</NumeroLinea>
-        <Descrizione>FORNITURE VARIE PER UFFICIO</Descrizione>
-        <Quantita>10.00</Quantita>
-        <PrezzoUnitario>2.00</PrezzoUnitario>
-        <PrezzoTotale>20.00</PrezzoTotale>
-        <AliquotaIVA>22.00</AliquotaIVA>
-      </DettaglioLinee>
       <DatiRiepilogo>
         <AliquotaIVA>22.00</AliquotaIVA>
-        <ImponibileImporto>27.00</ImponibileImporto>
-        <Imposta>5.95</Imposta>
-        <EsigibilitaIVA>D</EsigibilitaIVA>
+        <ImponibileImporto>5.00</ImponibileImporto>
+        <Imposta>1.10</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
       </DatiRiepilogo>
     </DatiBeniServizi>
     <DatiPagamento>
@@ -127,7 +106,7 @@
       <DettaglioPagamento>
         <ModalitaPagamento>MP01</ModalitaPagamento>
         <DataScadenzaPagamento>2015-01-30</DataScadenzaPagamento>
-        <ImportoPagamento>32.95</ImportoPagamento>
+        <ImportoPagamento>6.10</ImportoPagamento>
       </DettaglioPagamento>
     </DatiPagamento>
   </FatturaElettronicaBody>

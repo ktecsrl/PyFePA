@@ -27,11 +27,11 @@ SL = ('LS', 'LN')
 TD = map(lambda td: 'TD{:0=2d}'.format(td), range(1, 6))
 TR = ['RT01','RT01']
 TC = map(lambda tc: 'TC{:0=2d}'.format(tc), range(1,22))
-NT = map(lambda nt: 'NT{:0=2d}'.format(nt), range(1,6))
+NT = map(lambda nt: 'NT{:0=2d}'.format(nt), range(1,7))
 TCP = ('SC', 'PR', 'AB', 'AC')
 SM = ('SC', 'MG')
 TP = ('TP01', 'TP02', 'TP03')
-MP = map(lambda mp: 'MP{:0=2d}'.format(mp), range(1,21))
+MP = map(lambda mp: 'MP{:0=2d}'.format(mp), range(1,22))
 EI = ('I','D','S')
 
 
@@ -103,7 +103,8 @@ class FatturaElettronicaHeader(GenFePA):
     CedentePrestatore = FieldObject(required=True,object_class='CedentePrestatore', code=2)
     RappresentanteFiscale = FieldObject(object_class='RappresentanteFiscale', code=3)
     CessionarioCommittente = FieldObject(required=True,object_class='CessionarioCommittente', code=4)
-    TerzoIntermediarioOSoggettoEmittente = FieldObject(object_class='TerzoIntermediarioOSoggettoEmittente', code=5, depend= [6])
+    TerzoIntermediarioOSoggettoEmittente = FieldObject(object_class='TerzoIntermediarioOSoggettoEmittente',
+                                                       code=5, depend= [6])
     SoggettoEmittente = FieldCostant(cvalue=['CC','TZ'],code=6)
 
 
@@ -111,13 +112,10 @@ class DatiTrasmissione(GenFePA):
 
     IdTrasmittente = FieldObject(required=True,object_class='IdTrasmittente', code=1)
     ProgressivoInvio = FieldString(minlen=1,maxlen=10,required=True,code=2)
-    FormatoTrasmissione = FieldCostant(cvalue=['SDI11'],required=True,code=3)
-    CodiceDestinatario = FieldString(minlen=1,maxlen=6,required=True,code=4)
+    FormatoTrasmissione = FieldCostant(cvalue=['FPA12','FPR12'],required=True,code=3)
+    CodiceDestinatario = FieldString(minlen=6,maxlen=7,required=True,code=4)
     ContattiTrasmittente = FieldObject(object_class='ContattiTrasmittente', code=5)
-
-    def __init__(self):
-        self.FormatoTrasmissione = 'SDI11'
-        super(GenFePA,self).__init__()
+    PECDestinatario = FieldString(minlen=7,maxlen=256,code=6)
 
 
 class IdTrasmittente(GenFePA):
@@ -491,7 +489,7 @@ class DettaglioPagamento(GenFePA):
     CFQuietanzante = FieldString(minlen=1, maxlen=16, code=10)
     TitoloQuietanzante = FieldString(minlen=2, maxlen=10, code=11)
     IstitutoFinanziario = FieldString(minlen=1, maxlen=80, code=12)
-    IBAN = FieldString(minlen=27, maxlen=34, code=13)
+    IBAN = FieldString(minlen=15, maxlen=34, code=13)
     ABI = FieldString(minlen=5, maxlen=5, code=14)
     CAB = FieldString(minlen=5, maxlen=5, code=15)
     BIC = FieldString(minlen=8, maxlen=11, code=16)

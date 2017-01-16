@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="fatturapa_v1.1.xsl"?>
-<p:FatturaElettronica versione="1.1" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://www.fatturapa.gov.it/sdi/fatturapa/v1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd ">
   <FatturaElettronicaHeader>
     <DatiTrasmissione>
       <IdTrasmittente>
         <IdPaese>IT</IdPaese>
-        <IdCodice>00000000000</IdCodice>
+        <IdCodice>12345670017</IdCodice>
       </IdTrasmittente>
       <ProgressivoInvio>00001</ProgressivoInvio>
-      <FormatoTrasmissione>SDI11</FormatoTrasmissione>
-      <CodiceDestinatario>AAAAAA</CodiceDestinatario>
-      <ContattiTrasmittente/>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+      
+	  <ContattiTrasmittente/>
+	  <PECDestinatario>betagamma@pec.it</PECDestinatario>
     </DatiTrasmissione>
     <CedentePrestatore>
       <DatiAnagrafici>
@@ -35,7 +39,7 @@
       <DatiAnagrafici>
         <CodiceFiscale>09876543210</CodiceFiscale>
         <Anagrafica>
-          <Denominazione>AMMINISTRAZIONE BETA</Denominazione>
+          <Denominazione>BETA GAMMA</Denominazione>
         </Anagrafica>
       </DatiAnagrafici>
       <Sede>
@@ -61,36 +65,12 @@
         <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
         <IdDocumento>66685</IdDocumento>
         <NumItem>1</NumItem>
-        <CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
       </DatiOrdineAcquisto>
-      <DatiContratto>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
-	<IdDocumento>123</IdDocumento>
-	<Data>2012-09-01</Data>
-	<NumItem>5</NumItem>
-	<CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
-      </DatiContratto>
-      <DatiConvenzione>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
-	<IdDocumento>123</IdDocumento>
-	<NumItem>5</NumItem>
-	<CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
-      </DatiConvenzione>
-      <DatiRicezione>
-	<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
-	<IdDocumento>123</IdDocumento>
-	<NumItem>5</NumItem>
-	<CodiceCUP>123abc</CodiceCUP>
-	<CodiceCIG>456def</CodiceCIG>
-      </DatiRicezione>
       <DatiTrasporto>
 	<DatiAnagraficiVettore>				
 	  <IdFiscaleIVA>
 	    <IdPaese>IT</IdPaese>
-	    <IdCodice>00000000000</IdCodice>
+	    <IdCodice>24681012141</IdCodice>
 	  </IdFiscaleIVA>
     	  <Anagrafica>
 	    <Denominazione>Trasporto spa</Denominazione>
@@ -108,11 +88,19 @@
         <PrezzoTotale>5.00</PrezzoTotale>
         <AliquotaIVA>22.00</AliquotaIVA>
       </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>FORNITURE VARIE PER UFFICIO</Descrizione>
+        <Quantita>10.00</Quantita>
+        <PrezzoUnitario>2.00</PrezzoUnitario>
+        <PrezzoTotale>20.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
       <DatiRiepilogo>
         <AliquotaIVA>22.00</AliquotaIVA>
-        <ImponibileImporto>5.00</ImponibileImporto>
-        <Imposta>1.10</Imposta>
-        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <ImponibileImporto>25.00</ImponibileImporto>
+        <Imposta>5.50</Imposta>
+        <EsigibilitaIVA>D</EsigibilitaIVA>
       </DatiRiepilogo>
     </DatiBeniServizi>
     <DatiPagamento>
@@ -120,7 +108,7 @@
       <DettaglioPagamento>
         <ModalitaPagamento>MP01</ModalitaPagamento>
         <DataScadenzaPagamento>2015-01-30</DataScadenzaPagamento>
-        <ImportoPagamento>6.10</ImportoPagamento>
+        <ImportoPagamento>32.95</ImportoPagamento>
       </DettaglioPagamento>
     </DatiPagamento>
   </FatturaElettronicaBody>

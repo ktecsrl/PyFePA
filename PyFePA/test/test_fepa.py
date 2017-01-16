@@ -29,7 +29,7 @@ DPATH = os.path.dirname(os.path.abspath(__file__))
 class fepaTest(unittest.TestCase):
 
     def testData1(self):
-        with open(DPATH+'/IT01234567890_11001.xml', 'rt') as f:
+        with open(DPATH+'/IT01234567890_FPA01.xml', 'rt') as f:
             tree = ElementTree.parse(f)
             fe = serializer.deserialize(element=tree)
             strxml = serializer.serializer(fe,'xml')
@@ -37,7 +37,7 @@ class fepaTest(unittest.TestCase):
             self.assertIsInstance(fe, fepa.FatturaElettronica)
 
     def testData2(self):
-        with open(DPATH+'/IT01234567890_11002.xml', 'rt') as f:
+        with open(DPATH+'/IT01234567890_FPA02.xml', 'rt') as f:
             tree = ElementTree.parse(f)
             fe = serializer.deserialize(element=tree)
             strxml = serializer.serializer(fe,'xml')
@@ -45,7 +45,7 @@ class fepaTest(unittest.TestCase):
             self.assertIsInstance(fe, fepa.FatturaElettronica)
 
     def testData3(self):
-        with open(DPATH+'/IT01234567890_11003.xml', 'rt') as f:
+        with open(DPATH+'/IT01234567890_FPA03.xml', 'rt') as f:
             tree = ElementTree.parse(f)
             fe = serializer.deserialize(element=tree)
             strxml = serializer.serializer(fe,'xml')
@@ -53,7 +53,23 @@ class fepaTest(unittest.TestCase):
             self.assertIsInstance(fe, fepa.FatturaElettronica)
 
     def testData4(self):
-        with open(DPATH+'/IT01234567890_11004.xml', 'rt') as f:
+        with open(DPATH+'/IT01234567890_FPR01.xml', 'rt') as f:
+            tree = ElementTree.parse(f)
+            fe = serializer.deserialize(element=tree)
+            strxml = serializer.serializer(fe,'xml')
+            self.assertIsInstance(strxml, str)
+            self.assertIsInstance(fe, fepa.FatturaElettronica)
+
+    def testData5(self):
+        with open(DPATH + '/IT01234567890_FPR02.xml', 'rt') as f:
+            tree = ElementTree.parse(f)
+            fe = serializer.deserialize(element=tree)
+            strxml = serializer.serializer(fe, 'xml')
+            self.assertIsInstance(strxml, str)
+            self.assertIsInstance(fe, fepa.FatturaElettronica)
+
+    def testData6(self):
+        with open(DPATH+'/IT01234567890_FPR03.xml', 'rt') as f:
             tree = ElementTree.parse(f)
             fe = serializer.deserialize(element=tree)
             strxml = serializer.serializer(fe,'xml')
